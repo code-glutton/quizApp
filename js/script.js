@@ -4,10 +4,12 @@ createAnswerDiv = (parentDiv,arrayAns) => {
     for(let i = 0; i <= 3; i++){
         let divTag = document.createElement("div");
         parentDiv.appendChild(divTag);
-        const randomAns = arrayAns[Math.floor(Math.random() * arrayAns.length)];
-        console.log(arrayAns);
-        arrayAns.splice(randomAns,1);
-        console.log(arrayAns);
+        const randomNo =Math.floor(Math.random() * arrayAns.length) 
+        const randomAns = arrayAns[randomNo];
+        console.log(`random ${randomAns}`);
+        console.log("before splice "+ arrayAns);
+        arrayAns.splice(randomNo,1);
+        console.log("after splice "+arrayAns);
         let ansNode = document.createTextNode(randomAns);
         divTag.appendChild(ansNode);
 

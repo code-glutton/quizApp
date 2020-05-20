@@ -1,8 +1,20 @@
 console.log("working");
+const parentDiv = document.getElementById("quizReg");
+createAnswerDiv = (parentDiv,arrayAns) => {
+    for(let i = 0; i <= 3; i++){
+        let divTag = document.createElement("div");
+        parentDiv.appendChild(divTag);
+        const randomAns = arrayAns[Math.floor(Math.random() * arrayAns.length)];
+        console.log(arrayAns);
+        arrayAns.splice(randomAns,1);
+        console.log(arrayAns);
+        let ansNode = document.createTextNode(randomAns);
+        divTag.appendChild(ansNode);
+
+    }
+}
+
 const question = document.getElementById("header");
-const options = document.getElementsByClassName("answer");
-const optionsArr = Array.from(options);
-console.log(optionsArr);
 fetch('https://opentdb.com/api.php?amount=10&category=31&type=multiple').then(response => response.json())
 .then(
     data => {
@@ -12,11 +24,14 @@ fetch('https://opentdb.com/api.php?amount=10&category=31&type=multiple').then(re
         question.appendChild(questionNode);
 
         let answerSource = data.results[0].correct_answer;
-
+        let answerArr = [answerSource]
         let incorrectSource = data.results[0].incorrect_answers;
-        console.log(answerSource);
-        let AnswerNode = document.createTextNode(answerSource);
-        let incorrectNode = document.createTextNode(incorrectSource);
+        incorrectSource.map(x => {
+            answerArr.push(x);
+        })
+
+        createAnswerDiv(parentDiv,answerArr);
+
     }
 
 );

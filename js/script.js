@@ -2,13 +2,20 @@ console.log("working");
 const parentDiv = document.getElementById("quizReg");
 const button = document.getElementById("change");
 const createAnswerDiv = (parentDiv,arrayAns) => {
+    // clear the contents of the parent div so that it renders a whole new set of answers
     parentDiv.innerHTML = "";
+
+    // a for loop that populates the parent div with the answers
     for(let i = 0; i <= 3; i++){
         let divTag = document.createElement("div");
         parentDiv.appendChild(divTag);
+
+        // this is where a the answers are randomized. randomNo generates 
+        // a random number based on the array length and then it is passed as an index to the answer array
         const randomNo =Math.floor(Math.random() * arrayAns.length); 
         const randomAns = arrayAns[randomNo];
-
+        
+         //to make sure there is no repetiition
         arrayAns.splice(randomNo,1);
         
         let ansNode = document.createTextNode(randomAns);

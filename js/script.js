@@ -1,27 +1,58 @@
 console.log("working");
 const parentDiv = document.getElementById("quizReg");
 const button = document.getElementById("change");
+
+const getAnswer = (id,id2,id3,id4) => {
+
+    if (document.getElementById(id).checked) {
+        let rate_value = document.getElementById(id).value;
+        console.log(rate_value);
+      }
+      else if(document.getElementById(id2).checked){
+       let rate_value = document.getElementById(id2).value;
+        console.log(rate_value);
+      }
+      else if(document.getElementById(id3).checked){
+        let rate_value = document.getElementById(id3).value;
+        console.log(rate_value);
+      }
+      else{
+        let rate_value = document.getElementById(id4).value;
+        console.log(rate_value);
+      }
+
+}
+
 const createAnswerDiv = (parentDiv,arrayAns) => {
     // clear the contents of the parent div so that it renders a whole new set of answers
     parentDiv.innerHTML = "";
 
     // a for loop that populates the parent div with the answers
     for(let i = 0; i <= 3; i++){
-        let divTag = document.createElement("div");
+        let divTag = document.createElement("input");
+        let label = document.createElement("label");
+        let id = i;
+        divTag.setAttribute('type', 'radio');
+        divTag.setAttribute('name', "answer");
+        divTag.setAttribute('id', id);
+       
         parentDiv.appendChild(divTag);
+        parentDiv.appendChild(label);
 
         // this is where a the answers are randomized. randomNo generates 
         // a random number based on the array length and then it is passed as an index to the answer array
         const randomNo =Math.floor(Math.random() * arrayAns.length); 
         const randomAns = arrayAns[randomNo];
         
+        divTag.setAttribute('value', randomAns.toString());
          //to make sure there is no repetiition
         arrayAns.splice(randomNo,1);
         
         let ansNode = document.createTextNode(randomAns);
-        divTag.appendChild(ansNode);
-
+        label.appendChild(ansNode);
     }
+
+    
 }
 
 function ayy(data){
@@ -72,7 +103,9 @@ fetch('https://opentdb.com/api.php?amount=10&category=31&type=multiple').then(re
        
             button.addEventListener("click",function(){
                 if(arrayUsed.length > 0){
-                ayy(arrayUsed)
+                getAnswer(0,1,2,3);
+                ayy(arrayUsed);
+                
                 console.log(arrayUsed.length);
                 }
                 else{

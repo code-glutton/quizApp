@@ -1,23 +1,25 @@
 console.log("working");
 const parentDiv = document.getElementById("quizReg");
 const button = document.getElementById("change");
-
+let answerSource;
+let rate_value;
+let answerSource1
 const getAnswer = (id,id2,id3,id4) => {
 
     if (document.getElementById(id).checked) {
-        let rate_value = document.getElementById(id).value;
+        rate_value = document.getElementById(id).value;
         console.log(rate_value);
       }
       else if(document.getElementById(id2).checked){
-       let rate_value = document.getElementById(id2).value;
+       rate_value = document.getElementById(id2).value;
         console.log(rate_value);
       }
       else if(document.getElementById(id3).checked){
-        let rate_value = document.getElementById(id3).value;
+        rate_value = document.getElementById(id3).value;
         console.log(rate_value);
       }
       else{
-        let rate_value = document.getElementById(id4).value;
+        rate_value = document.getElementById(id4).value;
         console.log(rate_value);
       }
 
@@ -26,15 +28,15 @@ const getAnswer = (id,id2,id3,id4) => {
 const createAnswerDiv = (parentDiv,arrayAns) => {
     // clear the contents of the parent div so that it renders a whole new set of answers
     parentDiv.innerHTML = "";
-
+    let id 
     // a for loop that populates the parent div with the answers
     for(let i = 0; i <= 3; i++){
         let divTag = document.createElement("input");
         let label = document.createElement("label");
-        let id = i;
+        id = i;
         divTag.setAttribute('type', 'radio');
         divTag.setAttribute('name', "answer");
-        divTag.setAttribute('id', id);
+        divTag.setAttribute('id', i);
        
         parentDiv.appendChild(divTag);
         parentDiv.appendChild(label);
@@ -51,7 +53,8 @@ const createAnswerDiv = (parentDiv,arrayAns) => {
         let ansNode = document.createTextNode(randomAns);
         label.appendChild(ansNode);
     }
-
+    
+    
     
 }
 
@@ -64,7 +67,7 @@ function ayy(data){
         let questionNode = document.createTextNode(questionSource);
         question.appendChild(questionNode);
 
-        let answerSource = randomAns.correct_answer;
+        answerSource = randomAns.correct_answer;
         let answerArr = [answerSource]
         let incorrectSource = randomAns.incorrect_answers;
         incorrectSource.map(x => {
@@ -74,6 +77,7 @@ function ayy(data){
         data.splice(randomNo,1);
 
         createAnswerDiv(parentDiv,answerArr);
+        
 }
 
 const question = document.getElementById("header");
@@ -89,27 +93,53 @@ fetch('https://opentdb.com/api.php?amount=10&category=31&type=multiple').then(re
         console.log(question)
         question.appendChild(questionNode);
 
-        let answerSource = data.results[0].correct_answer;
-        let answerArr = [answerSource]
+        answerSource1 = data.results[0].correct_answer;
+        let answerArr = [answerSource1]
         let incorrectSource = data.results[0].incorrect_answers;
         incorrectSource.map(x => {
-            answerArr.push(x);
+            answerArr.push(x); 
         })
 
         createAnswerDiv(parentDiv,answerArr);
 
         arrayUsed.splice(0,1);
 
+        let correctAnswerArr = [answerSource1]
+        let selectedanswerArr = []
        
             button.addEventListener("click",function(){
                 if(arrayUsed.length > 0){
-                getAnswer(0,1,2,3);
-                ayy(arrayUsed);
+                //     console.log(answerSource);
                 
+                
+                //  console.log(correctAnswerArr);
+                ayy(arrayUsed);
+                if (document.getElementById("0").checked) {
+                    rate_value = document.getElementById(id).value;
+                    console.log(rate_value);
+                  }
+                  else if(document.getElementById("1").checked){
+                   rate_value = document.getElementById(id2).value;
+                    console.log(rate_value);
+                  }
+                  else if(document.getElementById("2").checked){
+                    rate_value = document.getElementById(id3).value;
+                    console.log(rate_value);
+                  }
+                  else{
+                    rate_value = document.getElementById("3").value;
+                    console.log(rate_value);
+                  }
+                correctAnswerArr.push(answerSource);
+                selectedanswerArr.push(rate_value);
                 console.log(arrayUsed.length);
+
                 }
                 else{
                     console.log(`done`);
+                    
+                    console.log(correctAnswerArr)
+                    console.log(selectedanswerArr)
                 }
             });
         

@@ -13,6 +13,7 @@ let no = 1;
 const submitedAns = [];
 const scoreAns = [];
 
+// this function is what picks the selected answer
 const getAnswer = (id,id2,id3,id4) => {
     if (document.getElementById(id).checked) {
         rate_value = document.getElementById(id).value;
@@ -40,7 +41,7 @@ const getAnswer = (id,id2,id3,id4) => {
 
 }
 
-
+// This function renders html to the page
 const renderFunct = (jsonData,indexArrNo,formTagFetch) => {
     let i = indexArrNo;
     h3TagFetch.innerHTML = "";
@@ -63,28 +64,31 @@ const renderFunct = (jsonData,indexArrNo,formTagFetch) => {
         const randomNo =Math.floor(Math.random() * answerArr.length); 
         
         let divTag = document.createElement("input");
+        let div = document.createElement("div");
         let label = document.createElement("label");
         divTag.setAttribute('type', 'radio');
         divTag.setAttribute('name', "answer");
         divTag.setAttribute('value', answerArr[randomNo] );
         divTag.setAttribute('id', j);
+        div.setAttribute("class","contain");
         label.appendChild(document.createTextNode(answerArr[randomNo]));
-        formTagFetch.appendChild(divTag);
-        formTagFetch.appendChild(label);
+        label.setAttribute("for", j);
+        div.setAttribute("id", j);
+        div.appendChild(divTag);
+        div.appendChild(label);
+        formTagFetch.appendChild(div);
 
         // this makes sure that options are not repeated by removing any redered option from the array
         answerArr.splice(randomNo,1);
     }
 }
 
+// this function makes the fetch api synchronous
 const request = async () => {
     const response = await fetch('https://opentdb.com/api.php?amount=10&category=31&type=multiple');
     const json = await response.json();
     console.log("res", json.results);
-    questionArr = json.results.map(x => {
-                  return [x.question,[x.correct_answer,x.incorrect_answers]];
-             });
-    console.log(questionArr);
+
     renderFunct(json.results,0,formTagFetch);
 
  
@@ -93,15 +97,9 @@ const request = async () => {
                 getAnswer(0,1,2,3);
                 renderFunct(json.results,no,formTagFetch);
                 no = no + 1;
-                console.log(no);
-                
-
                 if(no === 10){
-                    
-                    console.log("osas")
                     button.disabled = true;
                     var x = button.disabled
-                    console.log(x);
                     submit.disabled = false;
                 
                 }
@@ -110,7 +108,6 @@ const request = async () => {
 
     submit.addEventListener("click",function(){
         getAnswer(0,1,2,3);
-        console.log(submitedAns);
         json.results.map(x => {
            return submitedAns.map(y => {
                 if(x.correct_answer === y){
@@ -120,7 +117,6 @@ const request = async () => {
             });
             
         });
-        console.log(scoreAns);
         swal({
             icon: "success",
             title: "Your Score is",

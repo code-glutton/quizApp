@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    font-family: 'Lato', sans-serif;
+}
+
+body{
+    width:100%;
+    height:100%;
+    background-color: #5cc29f;
+}
+
+#main{
+    min-width:80vw;
+    min-height:70vh;
+    margin: 80px auto;
+    text-align: center;
+}
+
+#header{
+    width:30%;
+    height:30%;
+    margin: 0 auto;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: rgb(82, 126, 111);
+    -webkit-box-shadow: 0 10px 10px rgba(0,0,0,0.30), 0 10px 10px rgba(0,0,0,0.22);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0 10px 10px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0 10px 10px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+#quizReg{
+    width:90%;
+    margin: 20px auto;
+    display:flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    background-color: white;
+    padding-left: 100px;
+    padding-right: 100px;
+    -webkit-box-shadow: 0 10px 10px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    0 10px 10px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);  /* Firefox 3.5 - 3.6 */
+  box-shadow:         0 10px 10px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+#quizReg > div{
+    border-bottom: 1px solid #00002e;
+    width:100%;
+    height: 60px;
+    padding-top: 15px;
+    background-color: white;
+    text-align: left;
+}
+
+#quizReg > div:last-child{
+    border:none;
+}
+
+
+#quizReg>div>label{
+    cursor: pointer;
+    font-weight: 300;
+  font-size: 1.35em;
+  color: #00002e;
+  margin-left: 10px;
+}
+
+
+
+#submit,#change{
+    font-weight: 500;
+	font-size: 16px;
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+	line-height: 24px;
+    color: #5cc29f;
+    padding: 7px 20px;
+    border-radius: 25px;
+    background:#ffffff ;
+    transition: .4s;
+    border:1px;
+}
+
+#submit:hover{
+    background:#00002e ;
+}
+
+#submit{
+    margin-left: 10px;
+}
+
+
+#change:hover{
+    background:#00002e ;
+}
+
+#butto{
+    margin:0 auto;
+    width:auto;
+    display:inline-block;
+    padding: 20px;
+}

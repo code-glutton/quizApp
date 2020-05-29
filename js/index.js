@@ -1,12 +1,46 @@
 let questionAnswerArr;
+
 const button = document.getElementById("change");
 const submit = document.getElementById("submit");
 submit.disabled = true;
+
 let h3TagFetch = document.getElementById("header");
 let formTagFetch = document.getElementById("quizReg");
 console.log(formTagFetch);
+
 let no = 1;
-let disableWatch = no;
+
+const submitedAns = [];
+const scoreAns = [];
+
+const getAnswer = (id,id2,id3,id4) => {
+    if (document.getElementById(id).checked) {
+        rate_value = document.getElementById(id).value;
+        console.log(rate_value);
+        submitedAns.push(rate_value);
+      }
+      else if(document.getElementById(id2).checked){
+       rate_value = document.getElementById(id2).value;
+        console.log(rate_value);
+        submitedAns.push(rate_value);
+      }
+      else if(document.getElementById(id3).checked){
+        rate_value = document.getElementById(id3).value;
+        console.log(rate_value);
+        submitedAns.push(rate_value);
+      }
+      else if(document.getElementById(id4).checked){
+        rate_value = document.getElementById(id4).value;
+        console.log(rate_value);
+        submitedAns.push(rate_value);
+      }
+      else{
+          submitedAns.push(undefined);
+      }
+
+}
+
+
 const renderFunct = (jsonData,indexArrNo,formTagFetch) => {
     let i = indexArrNo;
     h3TagFetch.innerHTML = "";
@@ -54,25 +88,48 @@ const request = async () => {
     renderFunct(json.results,0,formTagFetch);
 
  
-        button.addEventListener("click",function(){
+    button.addEventListener("click",function(){
             if(no <= 9){
+                getAnswer(0,1,2,3);
                 renderFunct(json.results,no,formTagFetch);
                 no = no + 1;
                 console.log(no);
+                
 
                 if(no === 10){
-                console.log("osas")
-                button.disabled = true;
-                var x = button.disabled
-                console.log(x);
-                submit.disabled = false;
-            }
-            }
-            
-            
-           
+                    
+                    console.log("osas")
+                    button.disabled = true;
+                    var x = button.disabled
+                    console.log(x);
+                    submit.disabled = false;
+                
+                }
+            }   
         });
-    }
+
+    submit.addEventListener("click",function(){
+        getAnswer(0,1,2,3);
+        console.log(submitedAns);
+        json.results.map(x => {
+           return submitedAns.map(y => {
+                if(x.correct_answer === y){
+                   scoreAns.push(y);
+                }
+                
+            });
+            
+        });
+        console.log(scoreAns);
+        swal({
+            icon: "success",
+            title: "Your Score is",
+            text: scoreAns.length*10 + "%"
+          });
+        
+    })
+
+}
    
 
 

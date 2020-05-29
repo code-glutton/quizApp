@@ -72,8 +72,6 @@ const renderFunct = (jsonData,indexArrNo,formTagFetch) => {
         divTag.setAttribute('id', j);
         div.setAttribute("class","contain");
         label.appendChild(document.createTextNode(answerArr[randomNo]));
-        label.setAttribute("for", j);
-        div.setAttribute("id", j);
         div.appendChild(divTag);
         div.appendChild(label);
         formTagFetch.appendChild(div);
@@ -122,7 +120,7 @@ const request = async () => {
             title: "Your Score is",
             text: scoreAns.length*10 + "%"
           });
-        
+        console.log(submitedAns);
     })
 
 }

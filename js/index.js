@@ -1,17 +1,23 @@
 let questionAnswerArr;
 const button = document.getElementById("change");
+const submit = document.getElementById("submit");
+submit.disabled = true;
 let h3TagFetch = document.getElementById("header");
-
-const renderFunct = (jsonData,indexArrNo) => {
+let formTagFetch = document.getElementById("quizReg");
+console.log(formTagFetch);
+let no = 1;
+let disableWatch = no;
+const renderFunct = (jsonData,indexArrNo,formTagFetch) => {
     let i = indexArrNo;
-    // create questions
     h3TagFetch.innerHTML = "";
-    
+    formTagFetch.innerHTML = "";
+
+    // create questions
     let questionTextNode = document.createTextNode(jsonData[i].question);
     h3TagFetch.appendChild(questionTextNode);
 
     // create Answers
-    let formTagFetch = document.getElementById("quizReg");
+    
     let answerArr = [jsonData[i].correct_answer]
     jsonData[i].incorrect_answers.map(x => {
         return answerArr.push(x);
@@ -45,15 +51,32 @@ const request = async () => {
                   return [x.question,[x.correct_answer,x.incorrect_answers]];
              });
     console.log(questionArr);
-    renderFunct(json.results,0);
+    renderFunct(json.results,0,formTagFetch);
 
-    button.addEventListener("click",function(){
+ 
+        button.addEventListener("click",function(){
+            if(no <= 9){
+                renderFunct(json.results,no,formTagFetch);
+                no = no + 1;
+                console.log(no);
 
-        let no = 1;
-        renderFunct(json.results,no);
-        no++;
-    })
-}
+                if(no === 10){
+                console.log("osas")
+                button.disabled = true;
+                var x = button.disabled
+                console.log(x);
+                submit.disabled = false;
+            }
+            }
+            
+            
+           
+        });
+    }
+   
+
+
+
 
 request();
 

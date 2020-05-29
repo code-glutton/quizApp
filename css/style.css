@@ -45,7 +45,7 @@ body{
 }
 
 #header{
-    width:30%;
+    min-width:30%;
     height:30%;
     margin: 0 auto;
     border-radius: 15px;

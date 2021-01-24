@@ -108,7 +108,7 @@ const request = async () => {
         getAnswer(0,1,2,3);
         json.results.map(x => {
            return submitedAns.map(y => {
-                if(x.correct_answer === y){
+                if((x.correct_answer === y)  && (submitedAns.length <= 10)){
                    scoreAns.push(y);
                 }
                 

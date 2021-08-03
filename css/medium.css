@@ -28,4 +28,8 @@
         display: none;
     }
 
+
+    .medium-6-quiz{
+        grid-column: span 6;
+    }
 }

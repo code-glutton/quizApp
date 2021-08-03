@@ -3,6 +3,7 @@ let clickedElement1;
 let clickedElement2;
 let clickedElement3;
 let clickedElement4;
+let pageNo = 1;
 var element1IsClicked = false;
 var element2IsClicked = false;
 var element3IsClicked = false;
@@ -84,10 +85,10 @@ const getAnswer = (id,id2,id3,id4) => {
 
 // This function renders html to the page
 const renderFunct = (jsonData,indexArrNo,formTagFetch) => {
+  document.getElementById("mainContainerNavQ").innerHTML = pageNo+"/10";
     let i = indexArrNo;
     h3TagFetch.innerHTML = "";
     formTagFetch.innerHTML = "";
-
     // create questions
     let questionTextNode = document.createTextNode(jsonData[i].question);
     h3TagFetch.appendChild(questionTextNode);
@@ -103,10 +104,9 @@ const renderFunct = (jsonData,indexArrNo,formTagFetch) => {
         // So that the options are properly randomized here is a simple way to randomize the index selected in the
         // array
         const randomNo =Math.floor(Math.random() * answerArr.length); 
-        
        
         let p = document.createElement("p");
-        p.classList.add("small-12-quiz","mainContainerAnswers");
+        p.classList.add("small-12-quiz","mainContainerAnswers","medium-6-quiz");
         p.setAttribute('id', j);
         p.setAttribute('onclick',`clickHandler(${j});`);
         p.appendChild(document.createTextNode(answerArr[randomNo]));
@@ -135,6 +135,7 @@ const request = async () => {
     }
 
     button.addEventListener("click",function(){
+          pageNo = pageNo + 1;
             if(no <= 9){
                 getAnswer(0,1,2,3);
                 renderFunct(json.results,no,formTagFetch);
@@ -145,6 +146,7 @@ const request = async () => {
                     submit.disabled = false;
                 
                 }
+              
             }   
         });
 

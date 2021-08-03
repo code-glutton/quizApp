@@ -1,7 +1,43 @@
 let questionAnswerArr;
-var elementIsClicked = false; // declare the variable that tracks the state
-function clickHandler(){ // declare a function that updates the state
-  elementIsClicked = true;
+let clickedElement1;
+let clickedElement2;
+let clickedElement3;
+let clickedElement4;
+var element1IsClicked = false;
+var element2IsClicked = false;
+var element3IsClicked = false;
+var element4IsClicked = false; // declare the variable that tracks the state
+function clickHandler(i){ // declare a function that updates the state
+  console.log(i);
+  if(i===0){
+    element1IsClicked = true;
+    clickedElement1 = document.getElementById(i);
+    element2IsClicked = false;
+    element3IsClicked = false;
+    element4IsClicked = false;
+    console.log(clickedElement1)
+  }else if(i===1){
+    element2IsClicked = true;
+    clickedElement2 = document.getElementById(i);
+    element1IsClicked = false;
+    element3IsClicked = false;
+    element4IsClicked = false;
+    console.log(clickedElement2)
+  }else if(i === 2){
+    element3IsClicked = true;
+    clickedElement3 = document.getElementById(i);
+    element1IsClicked = false;
+    element2IsClicked = false;
+    element4IsClicked = false;
+    console.log(clickedElement3)
+  }else if(i === 3){
+    element4IsClicked = true;
+    clickedElement4 = document.getElementById(i);
+    element1IsClicked = false;
+    element3IsClicked = false;
+    element2IsClicked = false;
+    console.log(clickedElement4)
+  }
 }
 
 
@@ -20,23 +56,23 @@ const scoreAns = [];
 
 // this function is what picks the selected answer
 const getAnswer = (id,id2,id3,id4) => {
-    if (document.getElementById(id).checked) {
-        rate_value = document.getElementById(id).innerHTML;
+    if (element1IsClicked) {
+        rate_value = clickedElement1.innerHTML;
         console.log(rate_value);
         submitedAns.push(rate_value);
       }
-      else if(document.getElementById(id2).checked){
-       rate_value = document.getElementById(id2).innerHTML;
+      else if(element2IsClicked){
+       rate_value = clickedElement2.innerHTML;
         console.log(rate_value);
         submitedAns.push(rate_value);
       }
-      else if(document.getElementById(id3).checked){
-        rate_value = document.getElementById(id3).innerHTML;
+      else if(element3IsClicked){
+        rate_value = clickedElement3.innerHTML;
         console.log(rate_value);
         submitedAns.push(rate_value);
       }
-      else if(document.getElementById(id4).checked){
-        rate_value = document.getElementById(id4).innerHTML;
+      else if(element4IsClicked){
+        rate_value = clickedElement4.innerHTML;
         console.log(rate_value);
         submitedAns.push(rate_value);
       }
@@ -72,6 +108,7 @@ const renderFunct = (jsonData,indexArrNo,formTagFetch) => {
         let p = document.createElement("p");
         p.classList.add("small-12-quiz","mainContainerAnswers");
         p.setAttribute('id', j);
+        p.setAttribute('onclick',`clickHandler(${j});`);
         p.appendChild(document.createTextNode(answerArr[randomNo]));
         formTagFetch.appendChild(p);
 
@@ -93,7 +130,8 @@ const request = async () => {
     var gridItems = document.getElementsByClassName("mainContainerAnswers");
 
     for (var i = 0; i < gridItems[0].length; i ++) {
-      gridItems.addEventListener('click', clickHandler);
+      gridItems[i].addEventListener('click', clickHandler());
+      console.log(gridItems[i]);
     }
 
     button.addEventListener("click",function(){

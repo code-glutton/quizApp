@@ -1,0 +1,31 @@
+@media screen and (min-width: 768px){
+    nav{
+        display: grid;
+        grid-template-columns: repeat(12,minmax(min-content,1fr));
+        grid-auto-flow: row;
+        grid-auto-rows: min-content;
+    }
+
+    nav div{
+        grid-column: 1/2;
+    }
+    
+    nav ul{
+        grid-column: 9/13;
+        display: block;
+        padding:0 1rem;
+        justify-self: end;
+    }
+
+    nav ul li{
+        float: left;
+    }
+
+    nav ul li:nth-child(2){
+        margin-left: 1rem;
+    }
+    #hamburgerBtn{
+        display: none;
+    }
+
+}

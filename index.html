@@ -1,15 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Quiz</title>
-</head>
-<body>
-    <div id="home">
-        <a href='quiz.html'><button id="start" >Start Quiz</button></a>
-    </div>
-    
-</body>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Welcome | Osas Quiz</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="icon" type="image/png" href="./images/favi/favicon-16x16.png">
+        <link rel="stylesheet" href="./css/normalize.css"/>
+        <link rel="stylesheet" href="./css/small.css"/>
+        <link rel="stylesheet" href="./css/medium.css"/>
+        
+    </head>
+    <body class="row">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <header class="small-12">
+            <nav>
+                <div>
+                    <a href="index.html"><img src="./images/kunaiLogo.svg" alt="quiz app logo"/></a>
+                    <button id="hamburgerBtn">&#9776;</button>
+                </div>
+                
+                <ul id="navUl">
+                    <li> <a href="login.html">Login</a></li>
+                    <li> <a href="home.html">Leaderboard</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="small-12">
+            <img src="./images/kunaiLogo.svg" alt="quiz app logo"/>
+            <h1>Welcome to Osas quiz app.</h1>
+            <p class="pDesign">Sign up here:</p>
+            <form action="" method="post">
+                <p>
+                    <input type="email" name="email" id="emailId" placeholder="Email">
+                </p>
+                <p>
+                    <input type="text" name="username" id="usernameId" placeholder="Username">
+                </p>
+                <p>
+                    <input type="password" name="password" id="passwordId" placeholder="Password">
+                </p>
+                <p>
+                    <input type="submit" value="Signup" id="submitBtn">
+                </p>
+            </form>
+            <p class="pDesign">
+                Not new? <a href="login.html">Login</a>
+            </p>
+        </main>
+        <script src="./js/navbar.js"></script>
+    </body>
 </html>

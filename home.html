@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Quiz | Osas Quiz</title>
+        <title>Welcome | Osas Quiz</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="icon" type="image/png" href="./images/favi/favicon-16x16.png">
@@ -16,11 +16,11 @@
         <link rel="stylesheet" href="./css/medium.css"/>
         
     </head>
-    <body class="row">
+    <body class="row homeMain">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <header class="small-12">
+        <header class="small-12 mainHeader">
             <nav>
                 <div>
                     <a href="index.html"><img src="./images/kunaiLogo.svg" alt="quiz app logo"/></a>
@@ -28,33 +28,16 @@
                 </div>
                 
                 <ul id="navUl">
-                    <li> <a href="index.html">Sign Up</a></li>
+                    <li> <a href="login.html">Log out</a></li>
                     <li> <a href="home.html">Leaderboard</a></li>
                 </ul>
             </nav>
         </header>
         <main class="small-12">
-            <div class="mainContainer row-quiz">
-                <div class="mainContainerNav small-12-quiz">
-                    <p>1/10</p>
-                    <p>timer</p>
-                </div>
-                <div class="mainContainerQuestion small-12-quiz">
-                    <p id="header"></p>
-                </div>
-                <div id="quizReg" class="mainContainerAnswer small-12-quiz row-quiz">
-                    
-                </div>
-                
-                <div class="mainContainerBtn small-6-quiz">
-                    <button id="change">Next</button>
-                </div>
-                <div class="mainContainerBtn small-6-quiz">
-                    <button id="submit">Submit</button>
-                </div>
-            </div>
+            <h1 id="highscore">100</h1>
+            <p id="highscorePara">Highscore</p>
+            <a href="quiz.html"><button id="startQuizBtn">Start Quiz</button></a>
         </main>
         <script src="./js/navbar.js"></script>
-        <script src="./js/quiz.js"></script>
     </body>
 </html>

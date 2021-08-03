@@ -1,4 +1,9 @@
 let questionAnswerArr;
+var elementIsClicked = false; // declare the variable that tracks the state
+function clickHandler(){ // declare a function that updates the state
+  elementIsClicked = true;
+}
+
 
 const button = document.getElementById("change");
 const submit = document.getElementById("submit");
@@ -16,22 +21,22 @@ const scoreAns = [];
 // this function is what picks the selected answer
 const getAnswer = (id,id2,id3,id4) => {
     if (document.getElementById(id).checked) {
-        rate_value = document.getElementById(id).value;
+        rate_value = document.getElementById(id).innerHTML;
         console.log(rate_value);
         submitedAns.push(rate_value);
       }
       else if(document.getElementById(id2).checked){
-       rate_value = document.getElementById(id2).value;
+       rate_value = document.getElementById(id2).innerHTML;
         console.log(rate_value);
         submitedAns.push(rate_value);
       }
       else if(document.getElementById(id3).checked){
-        rate_value = document.getElementById(id3).value;
+        rate_value = document.getElementById(id3).innerHTML;
         console.log(rate_value);
         submitedAns.push(rate_value);
       }
       else if(document.getElementById(id4).checked){
-        rate_value = document.getElementById(id4).value;
+        rate_value = document.getElementById(id4).innerHTML;
         console.log(rate_value);
         submitedAns.push(rate_value);
       }
@@ -63,18 +68,12 @@ const renderFunct = (jsonData,indexArrNo,formTagFetch) => {
         // array
         const randomNo =Math.floor(Math.random() * answerArr.length); 
         
-        let divTag = document.createElement("input");
-        let div = document.createElement("div");
-        let label = document.createElement("label");
-        divTag.setAttribute('type', 'radio');
-        divTag.setAttribute('name', "answer");
-        divTag.setAttribute('value', answerArr[randomNo] );
-        divTag.setAttribute('id', j);
-        div.setAttribute("class","contain");
-        label.appendChild(document.createTextNode(answerArr[randomNo]));
-        div.appendChild(divTag);
-        div.appendChild(label);
-        formTagFetch.appendChild(div);
+       
+        let p = document.createElement("p");
+        p.classList.add("small-12-quiz","mainContainerAnswers");
+        p.setAttribute('id', j);
+        p.appendChild(document.createTextNode(answerArr[randomNo]));
+        formTagFetch.appendChild(p);
 
         // this makes sure that options are not repeated by removing any redered option from the array
         answerArr.splice(randomNo,1);
@@ -89,7 +88,14 @@ const request = async () => {
 
     renderFunct(json.results,0,formTagFetch);
 
- 
+    
+    console.log(document.getElementsByClassName("mainContainerAnswers"));
+    var gridItems = document.getElementsByClassName("mainContainerAnswers");
+
+    for (var i = 0; i < gridItems[0].length; i ++) {
+      gridItems.addEventListener('click', clickHandler);
+    }
+
     button.addEventListener("click",function(){
             if(no <= 9){
                 getAnswer(0,1,2,3);
@@ -130,4 +136,3 @@ const request = async () => {
 
 
 request();
-

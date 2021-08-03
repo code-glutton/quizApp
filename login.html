@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Quiz | Osas Quiz</title>
+        <title>Login | Osas Quiz</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="icon" type="image/png" href="./images/favi/favicon-16x16.png">
@@ -34,27 +34,24 @@
             </nav>
         </header>
         <main class="small-12">
-            <div class="mainContainer row-quiz">
-                <div class="mainContainerNav small-12-quiz">
-                    <p>1/10</p>
-                    <p>timer</p>
-                </div>
-                <div class="mainContainerQuestion small-12-quiz">
-                    <p id="header"></p>
-                </div>
-                <div id="quizReg" class="mainContainerAnswer small-12-quiz row-quiz">
-                    
-                </div>
-                
-                <div class="mainContainerBtn small-6-quiz">
-                    <button id="change">Next</button>
-                </div>
-                <div class="mainContainerBtn small-6-quiz">
-                    <button id="submit">Submit</button>
-                </div>
-            </div>
+            <img src="./images/kunaiLogo.svg" alt="quiz app logo"/>
+            <h1>Welcome back.</h1>
+            <p class="pDesign">Login:</p>
+            <form action="" method="post">
+                <p>
+                    <input type="text" name="username" id="usernameId" placeholder="Username">
+                </p>
+                <p>
+                    <input type="password" name="password" id="passwordId" placeholder="Password">
+                </p>
+                <p>
+                    <input type="submit" value="login" id="submitBtn">
+                </p>
+            </form>
+            <p class="pDesign">
+                Don't have an account? <a href="index.html"> Sign up</a>
+            </p>
         </main>
         <script src="./js/navbar.js"></script>
-        <script src="./js/quiz.js"></script>
     </body>
 </html>

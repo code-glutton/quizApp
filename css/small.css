@@ -29,7 +29,7 @@ header nav div{
 main{
     text-align: center;
     padding: 1.5rem;
-    margin: auto;
+    width: 100%;
 }
 
 main form{

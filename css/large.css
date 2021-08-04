@@ -1,0 +1,15 @@
+@media screen and (min-width:1024px) {
+    main{
+        text-align: center;
+        padding: 1.5rem;
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* limiting the width */
+.limiting{
+    max-width: 1140px;
+    margin: auto;
+}
+}

@@ -14,14 +14,14 @@
         <link rel="stylesheet" href="./css/normalize.css"/>
         <link rel="stylesheet" href="./css/small.css"/>
         <link rel="stylesheet" href="./css/medium.css"/>
-        
+        <link rel="stylesheet" href="./css/large.css">
     </head>
     <body class="row homeMain">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <header class="small-12 mainHeader">
-            <nav>
+            <nav class="limiting">
                 <div>
                     <a href="index.html"><img src="./images/kunaiLogo.svg" alt="quiz app logo"/></a>
                     <button id="hamburgerBtn">&#9776;</button>
@@ -33,7 +33,7 @@
                 </ul>
             </nav>
         </header>
-        <main class="small-12">
+        <main class="small-12 limiting">
             <h1 id="highscore">100</h1>
             <p id="highscorePara">Highscore</p>
             <a href="quiz.html"><button id="startQuizBtn">Start Quiz</button></a>

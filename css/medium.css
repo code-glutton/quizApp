@@ -27,7 +27,12 @@
     #hamburgerBtn{
         display: none;
     }
-
+    main{
+        text-align: center;
+        padding: 1.5rem;
+        width: 50%;
+        margin: auto;
+    }
 
     .medium-6-quiz{
         grid-column: span 6;

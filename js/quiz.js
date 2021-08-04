@@ -3,6 +3,7 @@ let clickedElement1;
 let clickedElement2;
 let clickedElement3;
 let clickedElement4;
+let timer = document.getElementById("mainContainerNavTimer")
 let pageNo = 1;
 var element1IsClicked = false;
 var element2IsClicked = false;
@@ -144,11 +145,39 @@ const request = async () => {
                     button.disabled = true;
                     var x = button.disabled
                     submit.disabled = false;
-                
+                  
                 }
               
             }   
         });
+
+        var tmOUt = setInterval(function(){
+          var n = 10;
+      
+          var tm = setInterval(function (){
+            n--;
+            timer.innerHTML = `${n}`;
+            if(n == 0 ){
+                clearInterval(tm);
+            }
+            console.log(n);
+          },1000);
+
+   
+          pageNo = pageNo + 1;
+            if(no <= 9){
+                getAnswer(0,1,2,3);
+                renderFunct(json.results,no,formTagFetch);
+                no = no + 1;
+                if(no === 10){
+                    button.disabled = true;
+                    var x = button.disabled
+                    submit.disabled = false;
+                    clearInterval(tmOUt);
+                }
+              
+            }   
+        },10000) 
 
     submit.addEventListener("click",function(){
         getAnswer(0,1,2,3);
